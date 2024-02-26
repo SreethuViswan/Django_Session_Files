@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p>{{Moviess}}</p> 
+    <h3>{{tittle}} </h3>
+    <p>{{year}}</p>
+    <h4>{{description}}</h4>
+    {%for movie in Moviess%}
+    <ul>
+        <a href="{%url 'details' movie.id %}">
+            <li>{{movie.tittle}}</li></a>
+    </ul>
+   
+    <!-- {{movie.year}}
+    {{movie.description}} -->
+
+    {%endfor%}
+
+</body>
+</html>
