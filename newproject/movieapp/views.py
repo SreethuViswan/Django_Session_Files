@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponse,HttpResponseRedirect
 from movieapp.models import Movie
 def detail(request,id):
 
@@ -33,3 +33,23 @@ def print_hello(request):
 def index(request):
     return render(request,'index.html')
 
+def add(request):
+    tittle = request.POST.get('tittle')
+    year = request.POST.get('year')
+    description = request.POST.get('description')
+    if tittle and year and description:
+        movie=Movie(tittle=tittle, year=year, description=description)
+        movie.save()
+        return HttpResponseRedirect('/hello')
+    return render(request,'add.html')
+
+def delete(request,id):
+    try:
+        data = Movie.objects.get(pk=id)
+        print(data)
+    except:
+        raise Http404("Does not exist")
+    data.delete()
+    return HttpResponseRedirect('/hello')
+    
+   

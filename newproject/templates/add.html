@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="{% url 'add' %}" method="post">
+        {% csrf_token %}
+        <input type="text" placeholder="Tittle" name="tittle">
+        <br>
+        <input type="text" placeholder="Year" name="year">
+        <br>
+        <textarea name="description" id="" cols="30" rows="10">Description</textarea>
+        <br>
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>
